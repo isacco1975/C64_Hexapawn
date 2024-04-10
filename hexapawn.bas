@@ -424,7 +424,7 @@ Sub ShowTitle(pColor As Byte) Static
    Poke 646, pColor
 
    Locate 1, 3
-   Print "esapedone 1.0 - by isaac garcia peveri"
+   Print "esapedone 1.2 - by isaac garcia peveri"
 
    Locate 1, 5
    Print "realizzato per leonardo del canale yt:"
@@ -737,7 +737,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End if
 
             If sphereNum = 4 And sbx3(3) <> " " Then
-               If gameGrid(4) = 1 And gameGrid(2) = 2 Then
+               If gameGrid(5) = 1 And gameGrid(2) = 2 Then
                   Call PawnOnGrid("REMOVE", "   ", 2)
                   Call PawnOnGrid("PLACE ", "CPU", 5)
                   sbx3(4) = sbx3(3)

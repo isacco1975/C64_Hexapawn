@@ -737,7 +737,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End if
 
             If sphereNum = 4 And sbx3(3) <> " " Then
-               If gameGrid(4) = 1 And gameGrid(2) = 2 Then
+               If gameGrid(5) = 1 And gameGrid(2) = 2 Then
                   Call PawnOnGrid("REMOVE", "   ", 2)
                   Call PawnOnGrid("PLACE ", "CPU", 5)
                   sbx3(4) = sbx3(3)
@@ -842,8 +842,8 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
             If sphereNum = 3 And sbx6(2) <> " "   Then
-               If gameGrid(1) = 2 And gameGrid(5) = 2 Then
-                  Call PawnOnGrid("REMOVE", "   ", 0)
+               If gameGrid(1) = 2 And gameGrid(5) = 1 Then
+                  Call PawnOnGrid("REMOVE", "   ", 1)
                   Call PawnOnGrid("PLACE ", "CPU", 5)
                   sbx6(4) = sbx6(2)
                End If
@@ -1551,7 +1551,7 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
     End If
 
     If pMove = "c3b3" And numMove > 0 Then
-         If gameGrid(5) = 0 And gameGrid(5) = 0  Then
+         If gameGrid(5) = 0 And gameGrid(8) = 1  Then
             Call PawnOnGrid("PLACE ", "PLY", 5)
             Call PawnOnGrid("REMOVE", "   ", 8)
             numMove = numMove + 1
