@@ -194,6 +194,38 @@ Sub ClearScreen() Static
 End Sub
 ' -------------------------------------------------------------
 
+' *** IF PLAYER WINS, CLEARS SELETCED SPHERE FROM BUFFER
+Sub ClearSelectedSpheres() Static
+   sbx1(3) = " "
+   sbx2(2) = " "
+   sbx3(4) = " "
+   sbx4(4) = " "
+   sbx5(3) = " "
+   sbx6(3) = " "
+   sbx7(3) = " "
+   sbx8(2) = " "
+   sbx9(2) = " "
+   sbx10(2) = " "
+   sbx11(2) = " "
+   sbx12(2) = " "
+   sbx13(1) = " "
+   sbx14(2) = " "
+   sbx15(1) = " "
+   sbx16(2) = " "
+   sbx17(2) = " "
+   sbx18(2) = " "
+   sbx19(2) = " "
+   sbx20(3) = " "
+   sbx21(2) = " "
+   sbx22(2) = " "
+   sbx23(2) = " "
+   sbx24(2) = " "
+   sbx25(3) = " "
+   sbx27(1) = " "
+   sbx28(2) = " "
+End Sub
+' -------------------------------------------------------------
+
 ' *** If PLAYER WINS, THE ONE THAT CPU USED TO LOSE THE GAME IS REMOVED
 Sub RemoveSphere(pBox As Byte) Static
    Select Case pBox
@@ -613,7 +645,7 @@ End Sub
 Sub ExtractSphere(pBox As Byte) Static
     Dim sphereNum As Int
     sphereNum = 0
-    'Randomize TI()
+    Randomize TI()
 
     Select Case pBox
        Case 28
@@ -1711,6 +1743,8 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
              cpuWins = cpuWins + 1
           End If
        End If
+       
+       Call ClearSelectedSpheres()
     End If
 
     Call BoardNumbers()
