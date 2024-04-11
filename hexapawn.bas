@@ -2,18 +2,22 @@
 ' **************************************************************
 ' * HEXAPAWN 1.0 - C. 2024 IGP (ISAAC GARCIA PEVERI) TECH BLOG *
 ' * DATE WRITTEN:  04/04/2024                                  *
-' * DATE COMPILED: 04/04/2024                                  *
-' * LAST EDITED:   04/04/2024                                  *
+' * DATE COMPILED: 11/04/2024                                  *
+' * LAST EDITED:   11/04/2024                                  *
 ' * COMPILER:      XC BASIC 3 FOR WINDOWS X64                  *
+' **************************************************************
+' *                                                            *
+' *  changes: 11/04/2024 many bug fixes on some moves.         *
+' *                                                            *
 ' **************************************************************
 ' * this software is based upon HER created by Roberto Rampini *
 ' * (C3B3 MOVE IS NOT PERMITTED AS FIRST)                      *
 ' *                                                            *
-' * IF YOU WANT TO EXPAND THIS GAME TO HAVE THE POSSIBILITY    *
-' * TO START WITH "C3B3" MOVE, YOU HAVE TO ADD ALL THE BOXES   *
-' * CORRESPONDING TO THE OTHER BOXES STARTING WITH "C1B1"      *
+' * I have a new 2.00 version with all the permitted moves     *
+' * with also c3b3 at start. Unfortunately I have to find a    *
+' * way to rewrite the software, because runs out of 50KB!     *
 ' *                                                            *
-' * MAX POSSIBILITIES FOR PLAYER TO WIN IN THIS VERSION: 6     *
+' * MAX POSSIBILITIES FOR PLAYER TO WIN IN THIS VERSION: 7     *
 ' * (after 6 player wins, the machine becomes unbeatable!)     *
 ' **************************************************************
 ' * Unfortunately XC BASIC is still under development, so there*
@@ -37,30 +41,30 @@ Dim winner As Byte
 Dim numMove As Byte
 
 ' THE MATCHBOXES
-Dim box1(14)  As Byte
-Dim box2(14)  As Byte
-Dim box3(14)  As Byte
-Dim box4(14)  As Byte
-Dim box5(14)  As Byte
-Dim box6(14)  As Byte
-Dim box7(14)  As Byte
-Dim box8(14)  As Byte
-Dim box9(14)  As Byte
-Dim box10(14) As Byte
-Dim box11(14) As Byte
-Dim box12(14) As Byte
-Dim box13(14) As Byte
-Dim box14(14) As Byte
-Dim box15(14) As Byte
-Dim box16(14) As Byte
-Dim box17(14) As Byte
-Dim box18(14) As Byte
-Dim box19(14) As Byte
-Dim box20(14) As Byte
-Dim box21(14) As Byte
-Dim box22(14) As Byte
-Dim box23(14) As Byte
-Dim box24(14) As Byte
+Dim box1(9)  As Byte
+Dim box2(9)  As Byte
+Dim box3(9)  As Byte
+Dim box4(9)  As Byte
+Dim box5(9)  As Byte
+Dim box6(9)  As Byte
+Dim box7(9)  As Byte
+Dim box8(9)  As Byte
+Dim box9(9)  As Byte
+Dim box10(9) As Byte
+Dim box11(9) As Byte
+Dim box12(9) As Byte
+Dim box13(9) As Byte
+Dim box14(9) As Byte
+Dim box15(9) As Byte
+Dim box16(9) As Byte
+Dim box17(9) As Byte
+Dim box18(9) As Byte
+Dim box19(9) As Byte
+Dim box20(9) As Byte
+Dim box21(9) As Byte
+Dim box22(9) As Byte
+Dim box23(9) As Byte
+Dim box24(9) As Byte
 
 ' THE SPHERE BOXES
 Dim sbx1(5)  As String*1
@@ -424,7 +428,7 @@ Sub ShowTitle(pColor As Byte) Static
    Poke 646, pColor
 
    Locate 1, 3
-   Print "esapedone 1.2 - by isaac garcia peveri"
+   Print "esapedone 1.5 - by isaac garcia peveri"
 
    Locate 1, 5
    Print "realizzato per leonardo del canale yt:"
@@ -439,7 +443,7 @@ Sub PawnOnGrid(pAction As String*6, pType As String*3, pPosition As Byte) Static
    Dim wCol As Byte, wRow As Byte
 
    If pType = "CPU" Then
-      Poke 646,0
+      Poke 646,7
       gameGrid(pPosition) = 2
    End If
    If pType = "PLY" Then
@@ -447,7 +451,7 @@ Sub PawnOnGrid(pAction As String*6, pType As String*3, pPosition As Byte) Static
       gameGrid(pPosition) = 1
    End If
    If pType = "   " Then
-      Poke 646,6
+      Poke 646,0
       gameGrid(pPosition) = 0
    End If
 
@@ -686,7 +690,7 @@ Sub ExtractSphere(pBox As Byte) Static
             sphereNum = CInt(Rnd()*2) + 1
 
             If sphereNum = 1 And sbx2(0) <> " " Then
-               If gameGrid(3) = 0 And gameGrid(0) = 2 Then
+               If gameGrid(2) = 0 And gameGrid(0) = 2 Then
                   Call PawnOnGrid("REMOVE", "   ", 0)
                   Call PawnOnGrid("PLACE ", "CPU", 3)
                   sbx2(4) = sbx2(0)
@@ -791,7 +795,7 @@ Sub ExtractSphere(pBox As Byte) Static
             sphereNum = CInt(Rnd()*3) + 1
 
             If sphereNum = 1 And sbx5(0) <> " " Then
-               If gameGrid(4) = 1 And gameGrid(0) = 2 Then
+               If gameGrid(3) = 1 And gameGrid(0) = 2 Then
                   Call PawnOnGrid("REMOVE", "   ", 0)
                   Call PawnOnGrid("PLACE ", "CPU", 4)
                   sbx5(4) = sbx5(0)
@@ -937,7 +941,7 @@ Sub ExtractSphere(pBox As Byte) Static
 
             If sphereNum = 2 And sbx10(1) <> " " Then
                If gameGrid(1) = 2 And gameGrid(3) = 1 Then
-                  Call PawnOnGrid("REMOVE", "   ", 2)
+                  Call PawnOnGrid("REMOVE", "   ", 1)
                   Call PawnOnGrid("PLACE ", "CPU", 3)
                   sbx10(4) = sbx10(1)
                End If
@@ -1020,7 +1024,7 @@ Sub ExtractSphere(pBox As Byte) Static
                If gameGrid(0) = 2 And gameGrid(4) = 1 Then
                   Call PawnOnGrid("REMOVE", "   ", 0)
                   Call PawnOnGrid("PLACE ", "CPU", 4)
-                  sbx15(4) = sbx15(1)
+                  sbx15(4) = sbx15(0)
                End If
             End If
 
@@ -1224,8 +1228,6 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
     End Select
 
-    ' Poke 646,7:locate 19,0: Print "sphere:";sphereNum ' REM DEBUG
-    ' Poke 646,7:locate 12,0: Print "box:";pBox: REM DEBUG
     boxExtracted = pBox
 End Sub
 ' -------------------------------------------------------------
@@ -1560,18 +1562,18 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
 
     If pMove = "rest" Then
        Call Init()
-       Call ClearScreen(6, 6)
+       Call ClearScreen(0, 0)
        Call ShowTitle(10)
-       Call ShowGrid(15)
+       Call ShowGrid(3)
        Call PlaceInitialPawns()
     End If
 
     If pMove = "next" And winner <> 0 Then
        numMove = 0
 
-       Call ClearScreen(6, 6)
+       Call ClearScreen(0, 0)
        Call ShowTitle(10)
-       Call ShowGrid(15)
+       Call ShowGrid(3)
        Call PlaceInitialPawns()
 
        If winner = 1 Then
@@ -1599,10 +1601,10 @@ End Sub
 ' -------------------------------------------------------------
 ' *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
-Call ClearScreen(6, 6)
+Call ClearScreen(0, 0)
 Call ShowTitle(10)
 Call Init()
-Call ShowGrid(15)
+Call ShowGrid(3)
 Call PlaceInitialPawns()
 Call BoardNumbers(15)
 
