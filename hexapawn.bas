@@ -31,9 +31,6 @@ Const maxCells = 9
 
 Dim gameGrid(9) As Byte
 Dim pawn(6) As String*1 ' A PAWN TO DRAW
-Dim gameNum As Byte
-Dim moveNum As Byte
-Dim sphereTaken(3) As Byte
 Dim playerWins As Byte
 Dim cpuWins As Byte
 Dim boxExtracted As Byte
@@ -499,68 +496,6 @@ Sub PawnOnGrid(pAction As String*6, pType As String*3, pPosition As Byte) Static
       wCol = wCol + 1
    Next
 End Sub
-' -------------------------------------------------------------
-
-' * ONLY FOR DEBUG PURPOSES: SHOWS THE STATUS OF MATCHBOXES SPHERES INSIDE
-'Sub DebugBoxInfo()
-'   poke 646, 12
-'   Dim y As Byte: y = 14
-'
-'   For x As Byte = 0 To maxCells - 1
-'      locate y+x + 1,07: print gameGrid(x)
-'   Next
-'
-'   Locate 2,09: Print "01:": locate 30,09: Print "13:"
-'   Locate 2,10: Print "02:": locate 30,10: Print "14:"
-'   Locate 2,11: Print "03:": locate 30,11: Print "15:"
-'   Locate 2,12: Print "04:": locate 30,12: Print "16:"
-'   Locate 2,13: Print "05:": locate 30,13: Print "17:"
-'   Locate 2,14: Print "06:": locate 30,14: Print "18:"
-'   Locate 2,15: Print "07:": locate 30,15: Print "19:"
-'   Locate 2,16: Print "08:": locate 30,16: Print "20:"
-'   Locate 2,17: Print "09:": locate 30,17: Print "21:"
-'   Locate 2,18: Print "10:": locate 30,18: Print "22:"
-'   Locate 2,19: Print "11:": locate 30,19: Print "23:"
-'   Locate 2,20: Print "12:": locate 30,20: Print "24:"
-'
-'   Dim ps As Byte: ps = 0
-'   y = 4
-'   Dim ch As String*1
-'
-'   For x As Byte = 0 To 4
-'        locate y+ps + 1,09: Print sbx1(x)
-'        locate y+ps + 1,10: Print sbx2(x)
-'        locate y+ps + 1,11: Print sbx3(x)
-'        locate y+ps + 1,12: Print sbx4(x)
-'        locate y+ps + 1,13: Print sbx5(x)
-'        locate y+ps + 1,14: Print sbx6(x)
-'        locate y+ps + 1,15: Print sbx7(x)
-'        locate y+ps + 1,16: Print sbx8(x)
-'        locate y+ps + 1,17: Print sbx9(x)
-'        locate y+ps + 1,18: Print sbx10(x)
-'        locate y+ps + 1,19: Print sbx11(x)
-'        locate y+ps + 1,20: Print sbx12(x)
-'       ps = ps + 1
-'   Next x
-'
-'   y = 32
-'   ps = 0
-'   For x As Byte = 0 To 4
-'       locate y+ps + 1,09: Print sbx13(x)
-'       locate y+ps + 1,10: Print sbx14(x)
-'       locate y+ps + 1,11: Print sbx15(x)
-'       locate y+ps + 1,12: Print sbx16(x)
-'       locate y+ps + 1,13: Print sbx17(x)
-'       locate y+ps + 1,14: Print sbx18(x)
-'       locate y+ps + 1,15: Print sbx19(x)
-'       locate y+ps + 1,16: Print sbx20(x)
-'       locate y+ps + 1,17: Print sbx21(x)
-'       locate y+ps + 1,18: Print sbx22(x)
-'       locate y+ps + 1,19: Print sbx23(x)
-'       locate y+ps + 1,20: Print sbx24(x)
-'       ps = ps + 1
-'   Next x
-'End Sub
 ' -------------------------------------------------------------
 
 ' *** PLACING INITIAL PAWNS ON THE BOARD
@@ -1465,7 +1400,7 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
     End If
 
     If pMove = "c2b2" Then
-         If gameGrid(4) = 0 And gameGrid(4) = 0 Then
+         If gameGrid(4) = 0 And gameGrid(7) = 1 Then
             Call PawnOnGrid("PLACE ", "PLY", 4)
             Call PawnOnGrid("REMOVE", "   ", 7)
             numMove = numMove + 1

@@ -443,7 +443,7 @@ Sub PawnOnGrid(pAction As String*6, pType As String*3, pPosition As Byte) Static
    Dim wCol As Byte, wRow As Byte
 
    If pType = "CPU" Then
-      Poke 646,0
+      Poke 646,7
       gameGrid(pPosition) = 2
    End If
    If pType = "PLY" Then
@@ -451,7 +451,7 @@ Sub PawnOnGrid(pAction As String*6, pType As String*3, pPosition As Byte) Static
       gameGrid(pPosition) = 1
    End If
    If pType = "   " Then
-      Poke 646,6
+      Poke 646,0
       gameGrid(pPosition) = 0
    End If
 
