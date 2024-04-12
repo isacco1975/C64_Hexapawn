@@ -730,7 +730,7 @@ Sub ExtractSphere(pBox As Byte) Static
             sphereNum = CInt(Rnd()*3) + 1
 
             If sphereNum = 1 And sbx5(0) <> " " Then
-               If gameGrid(3) = 1 And gameGrid(0) = 2 Then
+               If gameGrid(4) = 1 And gameGrid(0) = 2 Then
                   Call PawnOnGrid("REMOVE", "   ", 0)
                   Call PawnOnGrid("PLACE ", "CPU", 4)
                   sbx5(4) = sbx5(0)
