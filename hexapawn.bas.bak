@@ -25,38 +25,37 @@ Dim playerWins As Byte
 Dim cpuWins As Byte
 Dim boxExtracted As Byte
 Dim winner As Byte
-Dim numMove As Byte
 
 ' THE MATCHBOXES
-Dim box1(9)  As Byte
-Dim box2(9)  As Byte
-Dim box3(9)  As Byte
-Dim box4(9)  As Byte
-Dim box5(9)  As Byte
-Dim box6(9)  As Byte
-Dim box7(9)  As Byte
-Dim box8(9)  As Byte
-Dim box9(9)  As Byte
-Dim box10(9) As Byte
-Dim box11(9) As Byte
-Dim box12(9) As Byte
-Dim box13(9) As Byte
-Dim box14(9) As Byte
-Dim box15(9) As Byte
-Dim box16(9) As Byte
-Dim box17(9) As Byte
-Dim box18(9) As Byte
-Dim box19(9) As Byte
-Dim box20(9) As Byte
-Dim box21(9) As Byte
-Dim box22(9) As Byte
-Dim box23(9) As Byte
-Dim box24(9) As Byte
-Dim box25(9) As Byte
-Dim box26(9) As Byte
-Dim box27(9) As Byte
-Dim box28(9) As Byte
-Dim box29(9) As Byte
+Dim box1  As String*9: box1  = "222100011"
+Dim box2  As String*9: box2  = "222010101"
+Dim box3  As String*9: box3  = "202210001"
+Dim box4  As String*9: box4  = "022120001"
+Dim box5  As String*9: box5  = "202110010"
+Dim box6  As String*9: box6  = "220101001"
+Dim box7  As String*9: box7  = "022021100"
+Dim box8  As String*9: box8  = "022211100"
+Dim box9  As String*9: box9  = "202201010"
+Dim box10 As String*9: box10 = "220112001"
+Dim box11 As String*9: box11 = "022010001"
+Dim box12 As String*9: box12 = "022010100"
+Dim box13 As String*9: box13 = "202100001"
+Dim box14 As String*9: box14 = "002221000"
+Dim box15 As String*9: box15 = "200111000"
+Dim box16 As String*9: box16 = "020211000"
+Dim box17 as String*9: box17 = "020112000"
+Dim box18 As String*9: box18 = "200221000"
+Dim box19 As String*9: box19 = "002122000"
+Dim box20 As String*9: box20 = "002210000"
+Dim box21 As String*9: box21 = "020120000"
+Dim box22 As String*9: box22 = "020012000"
+Dim box23 As String*9: box23 = "200210000"
+Dim box24 As String*9: box24 = "002012000"
+Dim box25 As String*9: box25 = "222001110"
+Dim box26 As String*9: box26 = "022210110"
+Dim box27 As String*9: box27 = "202001100"
+Dim box28 As String*9: box28 = "202102010"
+Dim box29 As String*9: box29 = "202012100"
 
 ' THE SPHERE BOXES
 Dim sbx1(4)  As String*1
@@ -83,146 +82,80 @@ Dim sbx21(3) As String*1
 Dim sbx22(3) As String*1
 Dim sbx23(3) As String*1
 Dim sbx24(3) As String*1
-Dim sbx25(4) As String*1 '26 Is the same As box 5
+Dim sbx25(4) As String*1
+Dim sbx26(2) As String*1
 Dim sbx27(2) As String*1
 Dim sbx28(3) As String*1
-'Dim sbx29(5) As String*1
+Dim sbx29(5) As String*1
 ' -------------------------------------------------------------
 
 ' **** INITIALIZE SINGLE PAWN CHARACTER BUFFER AND MATCH BOXES
 Sub Init() Static
-   playerWins = 0: cpuWins = 0: winner = 0: numMove = 0
+   playerWins = 0: cpuWins = 0: winner = 0
 
     ' MATCHBOXES INITIALIZE
-   box1(0) = 2 : box2(0) = 2 :  box3(0) = 2 :  box4(0) = 0 :  box5(0) = 2
-   box1(1) = 2 : box2(1) = 2 :  box3(1) = 0 :  box4(1) = 2 :  box5(1) = 0
-   box1(2) = 2 : box2(2) = 2 :  box3(2) = 2 :  box4(2) = 2 :  box5(2) = 2
-   box1(3) = 1 : box2(3) = 0 :  box3(3) = 2 :  box4(3) = 1 :  box5(3) = 1
-   box1(4) = 0 : box2(4) = 1 :  box3(4) = 1 :  box4(4) = 2 :  box5(4) = 1
-   box1(5) = 0 : box2(5) = 0 :  box3(5) = 0 :  box4(5) = 0 :  box5(5) = 0
-   box1(6) = 0 : box2(6) = 1 :  box3(6) = 0 :  box4(6) = 0 :  box5(6) = 0
-   box1(7) = 1 : box2(7) = 0 :  box3(7) = 0 :  box4(7) = 0 :  box5(7) = 1
-   box1(8) = 1 : box2(8) = 1 :  box3(8) = 1 :  box4(8) = 1 :  box5(8) = 0
-
    sbx1(0) = "c": sbx2(0) = "c": sbx3(0) = "c": sbx4(0) = "c": sbx5(0) ="c"
    sbx1(1) = "y": sbx2(1) = "y": sbx3(1) = "y": sbx4(1) = "y": sbx5(1) ="y"
    sbx1(2) = "m": sbx2(2) = " ": sbx3(2) = "m": sbx4(2) = "m": sbx5(2) ="m"
-   sbx1(3) = " ":                sbx3(3) = "k": sbx4(3) = "k": sbx5(3) =" "
-                                 sbx3(4) = " ": sbx4(4) = " "
-
-   box6(0) = 2 :  box7(0) = 0 :  box8(0) = 0 :  box9(0) =  2:  box10(0) = 2
-   box6(1) = 2 :  box7(1) = 2 :  box8(1) = 2 :  box9(1) =  0:  box10(1) = 2
-   box6(2) = 0 :  box7(2) = 2 :  box8(2) = 2 :  box9(2) =  2:  box10(2) = 0
-   box6(3) = 1 :  box7(3) = 0 :  box8(3) = 2 :  box9(3) =  2:  box10(3) = 1
-   box6(4) = 0 :  box7(4) = 2 :  box8(4) = 1 :  box9(4) =  0:  box10(4) = 1
-   box6(5) = 1 :  box7(5) = 1 :  box8(5) = 1 :  box9(5) =  1:  box10(5) = 2
-   box6(6) = 0 :  box7(6) = 1 :  box8(6) = 1 :  box9(6) =  0:  box10(6) = 0
-   box6(7) = 0 :  box7(7) = 0 :  box8(7) = 0 :  box9(7) =  1:  box10(7) = 0
-   box6(8) = 1 :  box7(8) = 0 :  box8(8) = 0 :  box9(8) =  0:  box10(8) = 1
+   sbx1(3) = "":                 sbx3(3) = "k": sbx4(3) = "k": sbx5(3) =""
+                                 sbx3(4) = "":  sbx4(4) = ""
 
    sbx6(0) = "c": sbx7(0) = "c": sbx8(0) = "c": sbx9(0) = "c": sbx10(0) ="c"
    sbx6(1) = "y": sbx7(1) = "y": sbx8(1) = "y": sbx9(1) = "y": sbx10(1) ="y"
-   sbx6(2) = "m": sbx7(2) = "m": sbx8(2) = " ": sbx9(2) = " ": sbx10(2) =" "
-   sbx6(3) = " ": sbx7(3) = " "
-
-
-   box11(0) = 0 :  box12(0) = 0 :  box13(0) = 2 :  box14(0) = 0 :  box15(0) = 2
-   box11(1) = 2 :  box12(1) = 2 :  box13(1) = 0 :  box14(1) = 0 :  box15(1) = 0
-   box11(2) = 2 :  box12(2) = 2 :  box13(2) = 2 :  box14(2) = 2 :  box15(2) = 0
-   box11(3) = 0 :  box12(3) = 0 :  box13(3) = 1 :  box14(3) = 2 :  box15(3) = 1
-   box11(4) = 1 :  box12(4) = 1 :  box13(4) = 0 :  box14(4) = 2 :  box15(4) = 1
-   box11(5) = 0 :  box12(5) = 0 :  box13(5) = 0 :  box14(5) = 1 :  box15(5) = 1
-   box11(6) = 0 :  box12(6) = 1 :  box13(6) = 0 :  box14(6) = 0 :  box15(6) = 0
-   box11(7) = 0 :  box12(7) = 0 :  box13(7) = 0 :  box14(7) = 0 :  box15(7) = 0
-   box11(8) = 1 :  box12(8) = 0 :  box13(8) = 1 :  box14(8) = 0 :  box15(8) = 0
+   sbx6(2) = "m": sbx7(2) = "m": sbx8(2) = "":  sbx9(2) = "":  sbx10(2) =""
+   sbx6(3) = "":  sbx7(3) = ""
 
    sbx11(0) = "c": sbx12(0) = "c": sbx13(0) = "c": sbx14(0) = "c": sbx15(0) ="c"
-   sbx11(1) = "y": sbx12(1) = "y": sbx13(1) = " ": sbx14(1) = "y": sbx15(1) =" "
-   sbx11(2) = " ": sbx12(2) = " ":                 sbx14(2) = " "
-
-   box16(0) = 0 :  box17(0) = 0 :  box18(0) = 2 :  box19(0) = 0 :  box20(0) = 0
-   box16(1) = 2 :  box17(1) = 2 :  box18(1) = 0 :  box19(1) = 0 :  box20(1) = 0
-   box16(2) = 0 :  box17(2) = 0 :  box18(2) = 0 :  box19(2) = 2 :  box20(2) = 2
-   box16(3) = 2 :  box17(3) = 1 :  box18(3) = 2 :  box19(3) = 1 :  box20(3) = 2
-   box16(4) = 1 :  box17(4) = 1 :  box18(4) = 2 :  box19(4) = 2 :  box20(4) = 1
-   box16(5) = 1 :  box17(5) = 2 :  box18(5) = 1 :  box19(5) = 2 :  box20(5) = 0
-   box16(6) = 0 :  box17(6) = 0 :  box18(6) = 0 :  box19(6) = 0 :  box20(6) = 0
-   box16(7) = 0 :  box17(7) = 0 :  box18(7) = 0 :  box19(7) = 0 :  box20(7) = 0
-   box16(8) = 0 :  box17(8) = 0 :  box18(8) = 0 :  box19(8) = 0 :  box20(8) = 0
+   sbx11(1) = "y": sbx12(1) = "y": sbx13(1) = " ": sbx14(1) = "y": sbx15(1) =""
+   sbx11(2) = "":  sbx12(2) = "":                  sbx14(2) = ""
 
    sbx16(0) = "c": sbx17(0) = "c": sbx18(0) = "c": sbx19(0) = "c": sbx20(0) ="c"
    sbx16(1) = "y": sbx17(1) = "y": sbx18(1) = "y": sbx19(1) = "y": sbx20(1) ="y"
-   sbx16(2) = " ": sbx17(2) = " ": sbx18(2) = " ": sbx19(2) = " ": sbx20(2) ="m"
-                                                                   sbx20(3) =" "
-
-   box21(0) = 0 :  box22(0) = 0 :  box23(0) = 2 :  box24(0) = 0
-   box21(1) = 2 :  box22(1) = 2 :  box23(1) = 0 :  box24(1) = 0
-   box21(2) = 0 :  box22(2) = 0 :  box23(2) = 0 :  box24(2) = 2
-   box21(3) = 1 :  box22(3) = 0 :  box23(3) = 2 :  box24(3) = 0
-   box21(4) = 2 :  box22(4) = 1 :  box23(4) = 1 :  box24(4) = 1
-   box21(5) = 0 :  box22(5) = 2 :  box23(5) = 0 :  box24(5) = 2
-   box21(6) = 0 :  box22(6) = 0 :  box23(6) = 0 :  box24(6) = 0
-   box21(7) = 0 :  box22(7) = 0 :  box23(7) = 0 :  box24(7) = 0
-   box21(8) = 0 :  box22(8) = 0 :  box23(8) = 0 :  box24(8) = 0
-
-   box25(0) = 2 : box26(0) = 0 : box27(0) = 2 : box28(0) = 2 : box29(0) = 2
-   box25(1) = 2 : box26(1) = 2 : box27(1) = 0 : box28(1) = 0 : box29(1) = 0
-   box25(2) = 2 : box26(2) = 2 : box27(2) = 2 : box28(2) = 2 : box29(2) = 2
-   box25(3) = 0 : box26(3) = 2 : box27(3) = 0 : box28(3) = 1 : box29(3) = 0
-   box25(4) = 0 : box26(4) = 1 : box27(4) = 0 : box28(4) = 0 : box29(4) = 1
-   box25(5) = 1 : box26(5) = 0 : box27(5) = 1 : box28(5) = 2 : box29(5) = 2
-   box25(6) = 1 : box26(6) = 1 : box27(6) = 1 : box28(6) = 0 : box29(6) = 1
-   box25(7) = 1 : box26(7) = 1 : box27(7) = 0 : box28(7) = 1 : box29(7) = 0
-   box25(8) = 0 : box26(8) = 0 : box27(8) = 0 : box28(8) = 0 : box29(8) = 0
+   sbx16(2) = "":  sbx17(2) = "":  sbx18(2) = "":  sbx19(2) = "":  sbx20(2) ="m"
+                                                                   sbx20(3) =""
 
    sbx21(0) = "c": sbx22(0) = "c": sbx23(0) = "c": sbx24(0) = "c"
    sbx21(1) = "y": sbx22(1) = "y": sbx23(1) = "y": sbx24(1) = "y"
-   sbx21(2) = " ": sbx22(2) = " ": sbx23(2) = " ": sbx24(2) = " "
+   sbx21(2) = "":  sbx22(2) = "":  sbx23(2) = "":  sbx24(2) = ""
 
-   sbx25(0) = "c": sbx27(0) = "c": sbx28(0) = "c" ': sbx29(0) = "c"
-   sbx25(1) = "y": sbx27(1) = " ": sbx28(1) = "y" ': sbx29(1) = "y"
-   sbx25(2) = "m":                 sbx28(2) = " " ': sbx29(2) = "m"
-   sbx25(3) = " "                                 ': sbx29(3) = "k"
-                                                  '  sbx29(4) = " "
-End Sub
-' -------------------------------------------------------------
-
-' *** CLEAR THE SCREEN
-Sub ClearScreen() Static
-   Print CHR$(147)
-   Border 15: Background 15: POKE 646,1
+   sbx25(0) = "c": sbx26(0) = "c": sbx27(0) = "c": sbx28(0) = "c"  : sbx29(0) = "c"
+   sbx25(1) = "y": sbx26(1) = "":  sbx27(1) = "" : sbx28(1) = "y"  : sbx29(1) = "y"
+   sbx25(2) = "m":                 sbx28(2) = "" : sbx29(2) = "m"
+   sbx25(3) = ""                                 : sbx29(3) = "k"
+                                                   sbx29(4) = ""
 End Sub
 ' -------------------------------------------------------------
 
 ' *** IF PLAYER WINS, CLEARS SELETCED SPHERE FROM BUFFER
 Sub ClearSelectedSpheres() Static
-   sbx1(3) = " "
-   sbx2(2) = " "
-   sbx3(4) = " "
-   sbx4(4) = " "
-   sbx5(3) = " "
-   sbx6(3) = " "
-   sbx7(3) = " "
-   sbx8(2) = " "
-   sbx9(2) = " "
-   sbx10(2) = " "
-   sbx11(2) = " "
-   sbx12(2) = " "
-   sbx13(1) = " "
-   sbx14(2) = " "
-   sbx15(1) = " "
-   sbx16(2) = " "
-   sbx17(2) = " "
-   sbx18(2) = " "
-   sbx19(2) = " "
-   sbx20(3) = " "
-   sbx21(2) = " "
-   sbx22(2) = " "
-   sbx23(2) = " "
-   sbx24(2) = " "
-   sbx25(3) = " "
-   sbx27(1) = " "
-   sbx28(2) = " "
+   sbx1(3) = ""
+   sbx2(2) = ""
+   sbx3(4) = ""
+   sbx4(4) = ""
+   sbx5(3) = ""
+   sbx6(3) = ""
+   sbx7(3) = ""
+   sbx8(2) = ""
+   sbx9(2) = ""
+   sbx10(2) = ""
+   sbx11(2) = ""
+   sbx12(2) = ""
+   sbx13(1) = ""
+   sbx14(2) = ""
+   sbx15(1) = ""
+   sbx16(2) = ""
+   sbx17(2) = ""
+   sbx18(2) = ""
+   sbx19(2) = ""
+   sbx20(3) = ""
+   sbx21(2) = ""
+   sbx22(2) = ""
+   sbx23(2) = ""
+   sbx24(2) = ""
+   sbx25(3) = ""
+   sbx27(1) = ""
+   sbx28(2) = ""
+   sbx29(4) = ""
 End Sub
 ' -------------------------------------------------------------
 
@@ -232,151 +165,125 @@ Sub RemoveSphere(pBox As Byte) Static
        Case 25
            If sbx25(3) = "c" Then sbx25(0) = " "
            If sbx25(3) = "y" Then sbx25(1) = " "
-           sbx25(3) = " "
 
        Case 27
            If sbx27(1) = "c" Then sbx27(0) = " "
-           sbx27(1) = " "
 
        Case 29 ' specular of 3. Optimizing memory using same box
-           If sbx3(4) = "c" Then sbx3(0) = " "
-           If sbx3(4) = "y" Then sbx3(1) = " "
-           If sbx3(4) = "m" Then sbx3(2) = " "
-           If sbx3(4) = "k" Then sbx3(3) = " "
-           sbx3(4) = " "
+           If sbx29(4) = "c" Then sbx29(0) = " "
+           If sbx29(4) = "y" Then sbx29(1) = " "
+           If sbx29(4) = "m" Then sbx29(2) = " "
+           If sbx29(4) = "k" Then sbx29(3) = " "
 
        Case 28
            If sbx28(2) = "c" Then sbx28(0) = " "
            If sbx28(2) = "y" Then sbx28(1) = " "
-           sbx28(2) = " "
 
        Case 1
            If sbx1(3) = "c" Then sbx1(0) = " "
            If sbx1(3) = "y" Then sbx1(1) = " "
            If sbx1(3) = "m" Then sbx1(2) = " "
-           sbx1(3) = " "
 
        Case 2
            If sbx2(2) = "c" Then sbx2(0) = " "
            If sbx2(2) = "y" Then sbx2(1) = " "
-           sbx2(2) = " "
 
        Case 3
            If sbx3(4) = "c" Then sbx3(0) = " "
            If sbx3(4) = "y" Then sbx3(1) = " "
            If sbx3(4) = "m" Then sbx3(2) = " "
            If sbx3(4) = "k" Then sbx3(3) = " "
-           sbx3(4) = " "
 
        Case 4
            If sbx4(4) = "c" Then sbx4(0) = " "
            If sbx4(4) = "y" Then sbx4(1) = " "
            If sbx4(4) = "m" Then sbx4(2) = " "
            If sbx4(4) = "k" Then sbx4(3) = " "
-           sbx4(4) = " "
 
        Case 5
            If sbx5(3) = "c" Then sbx5(0) = " "
            If sbx5(3) = "y" Then sbx5(1) = " "
            If sbx5(3) = "m" Then sbx5(2) = " "
-           sbx5(3) = " "
 
        Case 6
            If sbx6(3) = "c" Then sbx6(0) = " "
            If sbx6(3) = "y" Then sbx6(1) = " "
            If sbx6(3) = "m" Then sbx6(2) = " "
-           sbx6(3) = " "
 
        Case 7
            If sbx7(3) = "c" Then sbx7(0) = " "
            If sbx7(3) = "y" Then sbx7(1) = " "
            If sbx7(3) = "m" Then sbx7(2) = " "
-           sbx7(3) = " "
 
        Case 8
            If sbx8(2) = "c" Then sbx8(0) = " "
            If sbx8(2) = "y" Then sbx8(1) = " "
-           sbx8(2) = " "
 
        Case 9
            If sbx9(2) = "c" Then sbx9(0) = " "
            If sbx9(2) = "y" Then sbx9(1) = " "
-           sbx9(2) = " "
 
        Case 10
            If sbx10(2) = "c" Then sbx10(0) = " "
            If sbx10(2) = "y" Then sbx10(1) = " "
-           sbx10(2) = " "
 
        Case 11
            If sbx11(2) = "c" Then sbx11(0) = " "
            If sbx11(2) = "y" Then sbx11(1) = " "
-           sbx11(2) = " "
 
        Case 12
            If sbx12(2) = "c" Then sbx12(0) = " "
            If sbx12(2) = "y" Then sbx12(1) = " "
-           sbx12(2) = " "
 
        Case 13
            If sbx13(1) = "c" Then sbx13(0) = " "
-           sbx13(1) = " "
 
        Case 14
            If sbx14(2) = "c" Then sbx14(0) = " "
            If sbx14(2) = "y" Then sbx14(1) = " "
-           sbx14(2) = " "
 
        Case 15
            If sbx15(1) = "c" Then sbx15(0) = " "
-           sbx15(1) = " "
 
        Case 16
            If sbx16(2) = "c" Then sbx16(0) = " "
            If sbx16(2) = "y" Then sbx16(1) = " "
-           sbx16(2) = " "
 
        Case 17
            If sbx17(2) = "c" Then sbx17(0) = " "
            If sbx17(2) = "y" Then sbx17(1) = " "
-           sbx17(2) = " "
 
        Case 18
            If sbx18(2) = "c" Then sbx18(0) = " "
            If sbx18(2) = "y" Then sbx18(1) = " "
-           sbx18(2) = " "
 
        Case 19
            If sbx19(2) = "c" Then sbx19(0) = " "
            If sbx19(2) = "y" Then sbx19(1) = " "
-           sbx19(2) = " "
 
        Case 20
            If sbx20(3) = "c" Then sbx20(0) = " "
            If sbx20(3) = "y" Then sbx20(1) = " "
            If sbx20(3) = "m" Then sbx20(2) = " "
-           sbx20(3) = " "
 
        Case 21
            If sbx21(2) = "c" Then sbx21(0) = " "
            If sbx21(2) = "y" Then sbx21(1) = " "
-           sbx21(2) = " "
 
        Case 22
            If sbx22(2) = "c" Then sbx22(0) = " "
            If sbx22(2) = "y" Then sbx22(1) = " "
-           sbx22(2) = " "
 
        Case 23
            If sbx23(2) = "c" Then sbx23(0) = " "
            If sbx23(2) = "y" Then sbx23(1) = " "
-           sbx23(2) = " "
 
        Case 24
            If sbx24(2) = "c" Then sbx24(0) = " "
            If sbx24(2) = "y" Then sbx24(1) = " "
-           sbx24(2) = " "
    End Select
+
+   Call ClearSelectedSpheres()
 End Sub
 ' -------------------------------------------------------------
 
@@ -473,17 +380,7 @@ Sub ShowTitle() Static
    Poke 646, 6
 
    Locate 1, 3
-   Print "  esapedone - by isaac garcia peveri"
-
-   Locate 1, 4
-   Print "       per: mille e una avventura     "
-
-   Locate 1, 5
-   Print "       release 2.0 - 11/04/2024       "
-
-   Poke 646, 9
-   Locate 1, 6
-   Print "  c3b3 non permessa come prima mossa! "
+   Print "  esapedone 2.0 - by isaac garcia peveri"
 End Sub
 ' -------------------------------------------------------------
 
@@ -643,13 +540,12 @@ End Sub
 
 ' CPU MOVE: EXTRACTS A SPHERE FROM THE SELECTED MATCHBOX SCHEME
 Sub ExtractSphere(pBox As Byte) Static
-    Dim sphereNum As Int
+    Dim sphereNum As Byte
     sphereNum = 0
-    'Randomize TI()
 
     Select Case pBox
        Case 28
-            sphereNum = CInt(Rnd()*2) + 1
+            sphereNum = CByte(Rnd()*2) + 1
 
             If sphereNum = 1 And sbx28(0) <> " " Then
                If gameGrid(5) = 2 And gameGrid(7) = 1 Then
@@ -657,7 +553,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 7)
                   sbx28(2) = sbx28(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -687,7 +583,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 5)
                   sbx25(3) = sbx25(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -697,7 +593,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 3)
                   sbx25(3) = sbx25(1)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 3
                End if
             End If
 
@@ -718,7 +614,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 3)
                   sbx1(2) = sbx1(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -728,7 +624,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 3)
                   sbx1(3) = sbx1(1)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 3
                End if
             End If
 
@@ -749,7 +645,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 3)
                   sbx2(2) = sbx2(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -761,7 +657,7 @@ Sub ExtractSphere(pBox As Byte) Static
                End If
             End If
 
-       Case 3 And 29
+       Case 3
             sphereNum = CInt(Rnd()*4) + 1
 
             If sphereNum = 1 And sbx3(0) <> " " Then
@@ -770,7 +666,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 6)
                   sbx3(4) = sbx3(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -780,7 +676,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 4)
                   sbx3(4) = sbx3(1)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 3
                End if
             End If
 
@@ -790,7 +686,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 4)
                   sbx3(4) = sbx3(2)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 4
                End If
             End if
 
@@ -802,46 +698,46 @@ Sub ExtractSphere(pBox As Byte) Static
                End If
             End if
 
-       'Case 29 ' using same box as 3
-       '     sphereNum = CInt(Rnd()*4) + 1
-       '
-       '     If sphereNum = 1 And sbx3(0) <> " " Then
-       '        If gameGrid(8) = 0 And gameGrid(5) = 2 Then
-       '           Call PawnOnGrid("REMOVE", "   ", 5)
-       '           Call PawnOnGrid("PLACE ", "CPU", 8)
-       '           sbx3(4) = sbx3(0)
-       '        Else
-       '           sphereNum = sphereNum + 1
-       '        End If
-       '     End If
-       '
-       '     If sphereNum = 2 And sbx3(1) <> " " Then
-       '        If gameGrid(2) = 2 And gameGrid(4) = 1 Then
-       '           Call PawnOnGrid("REMOVE", "   ", 2)
-       '           Call PawnOnGrid("PLACE ", "CPU", 4)
-       '           sbx3(4) = sbx3(1)
-       '        Else
-       '           sphereNum = sphereNum + 1
-       '        End if
-       '     End If
-       '
-       '     If sphereNum = 3 And sbx3(2) <> " " Then
-       '        If gameGrid(0) = 2 And gameGrid(4) = 1 Then
-       '           Call PawnOnGrid("REMOVE", "   ", 0)
-       '           Call PawnOnGrid("PLACE ", "CPU", 4)
-       '           sbx3(4) = sbx3(2)
-       '        Else
-       '           sphereNum = sphereNum + 1
-       '        End If
-       '     End if
-       '
-       '     If sphereNum = 4 And sbx3(3) <> " " Then
-       '        If gameGrid(0) = 2 And gameGrid(3) = 0 Then
-       '           Call PawnOnGrid("REMOVE", "   ", 0)
-       '           Call PawnOnGrid("PLACE ", "CPU", 3)
-       '           sbx3(4) = sbx3(3)
-       '        End If
-       '     End if
+       Case 29
+            sphereNum = CInt(Rnd()*4) + 1
+
+            If sphereNum = 1 And sbx29(0) <> " " Then
+               If gameGrid(8) = 0 And gameGrid(5) = 2 Then
+                  Call PawnOnGrid("REMOVE", "   ", 5)
+                  Call PawnOnGrid("PLACE ", "CPU", 8)
+                  sbx29(4) = sbx29(0)
+               Else
+                  sphereNum = 2
+               End If
+            End If
+
+            If sphereNum = 2 And sbx29(1) <> " " Then
+               If gameGrid(2) = 2 And gameGrid(4) = 1 Then
+                  Call PawnOnGrid("REMOVE", "   ", 2)
+                  Call PawnOnGrid("PLACE ", "CPU", 4)
+                  sbx29(4) = sbx3(1)
+               Else
+                  sphereNum = 3
+               End if
+            End If
+
+            If sphereNum = 3 And sbx29(2) <> " " Then
+               If gameGrid(0) = 2 And gameGrid(4) = 1 Then
+                  Call PawnOnGrid("REMOVE", "   ", 0)
+                  Call PawnOnGrid("PLACE ", "CPU", 4)
+                  sbx29(4) = sbx29(2)
+               Else
+                  sphereNum = 4
+               End If
+            End if
+
+            If sphereNum = 4 And sbx29(3) <> " " Then
+               If gameGrid(0) = 2 And gameGrid(3) = 0 Then
+                  Call PawnOnGrid("REMOVE", "   ", 0)
+                  Call PawnOnGrid("PLACE ", "CPU", 3)
+                  sbx29(4) = sbx29(3)
+               End If
+            End if
 
        Case 4
             sphereNum = CInt(Rnd()*4) + 1
@@ -852,7 +748,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 3)
                   sbx4(4) = sbx4(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -862,7 +758,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 7)
                   sbx4(4) = sbx4(1)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 3
                End If
             End If
 
@@ -872,7 +768,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 8)
                   sbx4(4) = sbx4(2)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 4
                End If
             End If
 
@@ -881,8 +777,6 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("REMOVE", "   ", 2)
                   Call PawnOnGrid("PLACE ", "CPU", 5)
                   sbx4(4) = sbx4(3)
-               Else
-                  sphereNum = sphereNum + 1
                End If
             End If
 
@@ -895,7 +789,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 4)
                   sbx5(3) = sbx5(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -905,7 +799,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 4)
                   sbx5(3) = sbx5(1)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 3
                End If
             End If
 
@@ -926,7 +820,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 3)
                   sbx6(3) = sbx6(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -936,7 +830,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 5)
                   sbx6(3) = sbx6(1)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 3
                End If
             End If
 
@@ -957,7 +851,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 6)
                   sbx7(3) = sbx7(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -967,7 +861,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 7)
                   sbx7(3) = sbx7(1)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 3
                End If
             End If
 
@@ -988,7 +882,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 5)
                   sbx8(2) = sbx8(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -1009,7 +903,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 5)
                   sbx8(2) = sbx8(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -1030,7 +924,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 6)
                   sbx9(2) = sbx9(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -1051,7 +945,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 4)
                   sbx10(2) = sbx10(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -1072,7 +966,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 4)
                   sbx11(2) = sbx11(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -1093,7 +987,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 4)
                   sbx12(2) = sbx12(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -1123,7 +1017,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 6)
                   sbx14(2) = sbx14(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -1153,7 +1047,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 6)
                   sbx16(2) = sbx16(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -1174,7 +1068,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 3)
                   sbx17(2) = sbx17(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -1195,7 +1089,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 6)
                   sbx18(2) = sbx18(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -1216,7 +1110,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 7)
                   sbx19(2) = sbx19(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -1237,7 +1131,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 6)
                   sbx20(3) = sbx20(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -1247,7 +1141,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 4)
                   sbx20(3) = sbx20(1)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 3
                End If
             End If
 
@@ -1268,7 +1162,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 3)
                   sbx21(2) = sbx21(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -1289,7 +1183,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 5)
                   sbx22(2) = sbx22(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -1310,7 +1204,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 6)
                   sbx23(2) = sbx23(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -1331,7 +1225,7 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("PLACE ", "CPU", 4)
                   sbx24(2) = sbx24(0)
                Else
-                  sphereNum = sphereNum + 1
+                  sphereNum = 2
                End If
             End If
 
@@ -1350,259 +1244,41 @@ End Sub
 
 ' *** CPU MOVE: MATCHS THE CURRENT GRID SCHEMA TO CHOSE THE CORRECT BOX
 Sub CpuMove() Static
-    Dim totEquals As Byte
+    Dim compareString(9) As string*1
 
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box28(idx) Then totEquals = totEquals + 1
+    For idx As Byte = 0 To maxCells - 1
+       compareString(idx) = STR$(gameGrid(idx))
     Next
-    If totEquals = 9 Then
-        Call ExtractSphere(28)
-        Exit Sub
-    End If
 
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box27(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(27)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box26(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(26)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box25(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(25)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box1(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(1)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box2(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(2)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box3(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(3)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box4(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(4)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box5(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(5)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box6(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(6)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box7(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(7)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box8(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(8)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box9(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(9)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box10(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(10)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box11(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(11)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box12(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(12)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box13(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(13)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box14(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(14)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box15(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(15)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box16(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(16)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box17(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(17)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box18(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(18)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box19(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(19)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box20(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(20)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box21(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(21)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box22(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(22)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box23(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(23)
-        Exit Sub
-    End If
-
-    totEquals = 0
-    For idx As byte = 0 To maxCells -1
-       If gameGrid(idx) = box24(idx) Then totEquals = totEquals + 1
-    Next
-    If totEquals = 9 Then
-        Call ExtractSphere(24)
-        Exit Sub
-    End If
+    If compareString  = box1  Then Call ExtractSphere(1)
+    If compareString  = box2  Then Call ExtractSphere(2)
+    If compareString  = box3  Then Call ExtractSphere(3)
+    If compareString  = box4  Then Call ExtractSphere(4)
+    If compareString  = box5  Then Call ExtractSphere(5)
+    If compareString  = box6  Then Call ExtractSphere(6)
+    If compareString  = box7  Then Call ExtractSphere(7)
+    If compareString  = box8  Then Call ExtractSphere(8)
+    If compareString  = box9  Then Call ExtractSphere(9)
+    If compareString  = box10 Then Call ExtractSphere(10)
+    If compareString  = box11 Then Call ExtractSphere(11)
+    If compareString  = box12 Then Call ExtractSphere(12)
+    If compareString  = box13 Then Call ExtractSphere(13)
+    If compareString  = box14 Then Call ExtractSphere(14)
+    If compareString  = box15 Then Call ExtractSphere(15)
+    If compareString  = box16 Then Call ExtractSphere(16)
+    If compareString  = box17 Then Call ExtractSphere(17)
+    If compareString  = box18 Then Call ExtractSphere(18)
+    If compareString  = box19 Then Call ExtractSphere(19)
+    If compareString  = box20 Then Call ExtractSphere(20)
+    If compareString  = box21 Then Call ExtractSphere(21)
+    If compareString  = box22 Then Call ExtractSphere(22)
+    If compareString  = box23 Then Call ExtractSphere(23)
+    If compareString  = box24 Then Call ExtractSphere(24)
+    If compareString  = box25 Then Call ExtractSphere(25)
+    If compareString  = box26 Then Call ExtractSphere(26)
+    If compareString  = box27 Then Call ExtractSphere(27)
+    If compareString  = box28 Then Call ExtractSphere(28)
+    If compareString  = box29 Then Call ExtractSphere(29)
 End Sub
 ' -------------------------------------------------------------
 
@@ -1612,7 +1288,6 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
         If gameGrid(3) = 0 And gameGrid(6) = 1 Then
             Call PawnOnGrid("PLACE ", "PLY", 3)
             Call PawnOnGrid("REMOVE", "   ", 6)
-            numMove = numMove + 1
         End If
     End If
 
@@ -1620,7 +1295,6 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
          If gameGrid(4) = 0 And gameGrid(4) = 0 Then
             Call PawnOnGrid("PLACE ", "PLY", 4)
             Call PawnOnGrid("REMOVE", "   ", 7)
-            numMove = numMove + 1
         End If
     End If
 
@@ -1628,7 +1302,6 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
          If gameGrid(4) = 2 And gameGrid(6) = 1 Then
             Call PawnOnGrid("PLACE ", "PLY", 4)
             Call PawnOnGrid("REMOVE", "   ", 6)
-            numMove = numMove + 1
         End If
     End If
 
@@ -1636,7 +1309,6 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
          If gameGrid(3) = 2 And gameGrid(7) = 1 Then
             Call PawnOnGrid("PLACE ", "PLY", 3)
             Call PawnOnGrid("REMOVE", "   ", 7)
-            numMove = numMove + 1
         End If
     End If
 
@@ -1644,7 +1316,6 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
          If gameGrid(5) = 2 And gameGrid(7) = 1 Then
             Call PawnOnGrid("PLACE ", "PLY", 5)
             Call PawnOnGrid("REMOVE", "   ", 7)
-            numMove = numMove + 1
         End If
     End If
 
@@ -1652,7 +1323,6 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
          If gameGrid(4) = 2 And gameGrid(8) = 1 Then
             Call PawnOnGrid("PLACE ", "PLY", 4)
             Call PawnOnGrid("REMOVE", "   ", 8)
-            numMove = numMove + 1
         End If
     End If
 
@@ -1660,7 +1330,6 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
          If gameGrid(2) = 2 And gameGrid(4) = 1 Then
             Call PawnOnGrid("PLACE ", "PLY", 2)
             Call PawnOnGrid("REMOVE", "   ", 4)
-            numMove = numMove + 1
         End If
     End If
 
@@ -1668,7 +1337,6 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
          If gameGrid(1) = 2 And gameGrid(5) = 1 Then
             Call PawnOnGrid("PLACE ", "PLY", 1)
             Call PawnOnGrid("REMOVE", "   ", 5)
-            numMove = numMove + 1
         End If
     End If
 
@@ -1676,7 +1344,6 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
          If gameGrid(0) = 2 And gameGrid(4) = 1 Then
             Call PawnOnGrid("PLACE ", "PLY", 0)
             Call PawnOnGrid("REMOVE", "   ", 4)
-            numMove = numMove + 1
         End If
     End If
 
@@ -1684,7 +1351,6 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
          If gameGrid(0) = 0  And gameGrid(3) = 1 Then
             Call PawnOnGrid("PLACE ", "PLY", 0)
             Call PawnOnGrid("REMOVE", "   ", 3)
-            numMove = numMove + 1
         End If
     End If
 
@@ -1692,7 +1358,6 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
          If gameGrid(3) = 1 And gameGrid(1) = 2 Then
             Call PawnOnGrid("PLACE ", "PLY", 1)
             Call PawnOnGrid("REMOVE", "   ", 3)
-            numMove = numMove + 1
         End If
     End If
 
@@ -1700,7 +1365,6 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
          If gameGrid(1) = 0 And gameGrid(4) = 1 Then
             Call PawnOnGrid("PLACE ", "PLY", 1)
             Call PawnOnGrid("REMOVE", "   ", 4)
-            numMove = numMove + 1
         End If
     End If
 
@@ -1708,11 +1372,10 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
          If gameGrid(2) = 0 And gameGrid(5) = 1 Then
             Call PawnOnGrid("PLACE ", "PLY", 2)
             Call PawnOnGrid("REMOVE", "   ", 5)
-            numMove = numMove + 1
         End If
     End If
 
-    If pMove = "c3b3" And numMove > 0 Then
+    If pMove = "c3b3" Then
          If gameGrid(5) = 0 And gameGrid(8) = 1  Then
             Call PawnOnGrid("PLACE ", "PLY", 5)
             Call PawnOnGrid("REMOVE", "   ", 8)
@@ -1720,17 +1383,15 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
     End If
 
     If pMove = "rest" Then
+       Print "{clear}"
        Call Init()
-       Call ClearScreen()
        Call ShowTitle()
        Call ShowGrid()
        Call PlaceInitialPawns()
     End If
 
     If pMove = "next" And winner <> 0 Then
-    	 numMove = 0
-
-       Call ClearScreen()
+       Print "{clear}"
        Call ShowTitle()
        Call ShowGrid()
        Call PlaceInitialPawns()
@@ -1743,7 +1404,7 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
              cpuWins = cpuWins + 1
           End If
        End If
-       
+
        Call ClearSelectedSpheres()
     End If
 
@@ -1760,7 +1421,9 @@ End Sub
 ' -------------------------------------------------------------
 ' *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 
-Call ClearScreen()
+Border 15: Background 15: POKE 646,1
+Print "{clear}"
+
 Call ShowTitle()
 Call Init()
 Call ShowGrid()
