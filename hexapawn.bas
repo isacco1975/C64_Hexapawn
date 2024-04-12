@@ -425,7 +425,7 @@ Sub ShowTitle(pColor As Byte) Static
    Poke 646, pColor
 
    Locate 1, 3
-   Print "esapedone 1.5 - by isaac garcia peveri"
+   Print "esapedone 1.6 - by isaac garcia peveri"
 
    Locate 1, 5
    Print "realizzato per leonardo del canale yt:"
