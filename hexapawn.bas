@@ -11,6 +11,10 @@
 ' *      CHANGES: 11/04/2024: permitted c3b3 as first move     *
 ' *               expanding the game as should be!             *
 ' *                                                            *
+' *               UNFORTUNATELY ONE MOVE will not work because *
+' *               there is not sufficient memory to add it     *
+' *               (see commented code)                         *
+' *                                                            *
 ' **************************************************************
 ' * Unfortunately XC BASIC is still under development, so there*
 ' * are still some bugs calling routines and it is not still   *
@@ -59,6 +63,8 @@ Dim box26(9) As Byte
 Dim box27(9) As Byte
 Dim box28(9) As Byte
 Dim box29(9) As Byte
+Dim box30(9) As Byte
+'Dim box31(9) As Byte
 
 ' THE SPHERE BOXES
 Dim sbx1(4)  As String*1
@@ -90,6 +96,8 @@ Dim sbx26(2) As String*1
 Dim sbx27(2) As String*1
 Dim sbx28(3) As String*1
 Dim sbx29(5) As String*1
+Dim sbx30(4) As String*1
+'Dim sbx31(3) As String*1
 ' -------------------------------------------------------------
 
 ' **** INITIALIZE SINGLE PAWN CHARACTER BUFFER AND MATCH BOXES
@@ -187,6 +195,16 @@ Sub Init() Static
    box25(6) = 1 :  box26(6) = 1 :  box27(6) = 1 :  box28(6) = 0:  box29(6) = 1
    box25(7) = 1 :  box26(7) = 1 :  box27(7) = 0 :  box28(7) = 1:  box29(7) = 0
    box25(8) = 0 :  box26(8) = 0 :  box27(8) = 0 :  box28(8) = 0:  box29(8) = 0
+
+   box30(0) = 0 :  sbx30(0) = "c"':  sbx31(0) = "c" ':box31(0) = 2
+   box30(1) = 2 :  sbx30(1) = "y"':  sbx31(1) = "y" ':box31(1) = 0
+   box30(2) = 2 :  sbx30(2) = "m"':  sbx31(2) = ""  ':box31(2) = 0
+   box30(3) = 1 :  sbx30(3) = ""                   ':box31(3) = 1
+   box30(4) = 0                                    ':box31(4) = 2
+   box30(5) = 1                                    ':box31(5) = 2
+   box30(6) = 1                                    ':box31(6) = 0
+   box30(7) = 0                                    ':box31(7) = 0
+   box30(8) = 0                                    ':box31(8) = 0
 End Sub
 ' -------------------------------------------------------------
 
@@ -220,6 +238,8 @@ Sub ClearSelectedSpheres() Static
    sbx27(1) = ""
    sbx28(2) = ""
    sbx29(4) = ""
+   sbx30(3) = ""
+   'sbx31(2) = ""
 End Sub
 ' -------------------------------------------------------------
 
@@ -227,13 +247,17 @@ End Sub
 Sub RemoveSphere(pBox As Byte) Static
    Select Case pBox
        Case 25
-           If sbx25(3) = "c" Then sbx25(0) = " "
-           If sbx25(3) = "y" Then sbx25(1) = " "
+           If sbx25(2) = "c" Then sbx25(0) = " "
+           If sbx25(2) = "y" Then sbx25(1) = " "
+
+       'Case 31
+       '    If sbx31(2) = "c" Then sbx31(0) = " "
+       '    If sbx31(2) = "y" Then sbx31(1) = " "
 
        Case 27
            If sbx27(1) = "c" Then sbx27(0) = " "
 
-       Case 29 ' specular of 3. Optimizing memory using same box
+       Case 29
            If sbx29(4) = "c" Then sbx29(0) = " "
            If sbx29(4) = "y" Then sbx29(1) = " "
            If sbx29(4) = "m" Then sbx29(2) = " "
@@ -247,6 +271,11 @@ Sub RemoveSphere(pBox As Byte) Static
            If sbx1(3) = "c" Then sbx1(0) = " "
            If sbx1(3) = "y" Then sbx1(1) = " "
            If sbx1(3) = "m" Then sbx1(2) = " "
+
+       Case 30
+           If sbx30(3) = "c" Then sbx30(0) = " "
+           If sbx30(3) = "y" Then sbx30(1) = " "
+           If sbx30(3) = "m" Then sbx30(2) = " "
 
        Case 2
            If sbx2(2) = "c" Then sbx2(0) = " "
@@ -444,7 +473,8 @@ Sub ShowTitle() Static
    Poke 646, 6
 
    Locate 1, 3
-   Print "  esapedone 2.0 - by isaac garcia peveri"
+   Print " esapedone 2.0  by isaac garcia peveri"
+   Print "    per <<< mille e una avventura >>> "
 End Sub
 ' -------------------------------------------------------------
 
@@ -608,6 +638,28 @@ Sub ExtractSphere(pBox As Byte) Static
     sphereNum = 0
 
     Select Case pBox
+       'Case 31 ;THIS MOVE WILL CAUSE A BLOCKING SITUATION. I CAN'T PUT
+       '         THIS CODE BECAUSE IT GOES OUT OF 50K... SORRY :(
+       '     sphereNum = CByte(Rnd()*2) + 1
+       '
+       '     If sphereNum = 1 And sbx31(0) <> " " Then
+       '        If gameGrid(4) = 2 And gameGrid(7) = 0 Then
+       '           Call PawnOnGrid("REMOVE", "   ", 4)
+       '           Call PawnOnGrid("PLACE ", "CPU", 7)
+       '           sbx31(2) = sbx31(0)
+       '        Else
+       '           sphereNum = 2
+       '        End If
+       '     End If
+       '
+       '     If sphereNum = 2 And sbx31(1) <> " " Then
+       '        If gameGrid(5) = 2 And gameGrid(8) = 0 Then
+       '           Call PawnOnGrid("REMOVE", "   ", 5)
+       '           Call PawnOnGrid("PLACE ", "CPU", 8)
+       '           sbx31(2) = sbx31(1)
+       '        End If
+       '     End If
+
        Case 28
             sphereNum = CByte(Rnd()*2) + 1
 
@@ -903,6 +955,37 @@ Sub ExtractSphere(pBox As Byte) Static
                   Call PawnOnGrid("REMOVE", "   ", 1)
                   Call PawnOnGrid("PLACE ", "CPU", 6)
                   sbx6(3) = sbx6(2)
+               End If
+            End If
+
+       Case 30
+            sphereNum = CByte(Rnd()*3) + 1
+
+            If sphereNum = 1 And sbx30(0) <> " "  Then
+               If gameGrid(1) = 2 And gameGrid(5) = 1 Then
+                  Call PawnOnGrid("REMOVE", "   ", 1)
+                  Call PawnOnGrid("PLACE ", "CPU", 5)
+                  sbx30(3) = sbx30(0)
+               Else
+                  sphereNum = 2
+               End If
+            End If
+
+            If sphereNum = 2 And sbx30(1) <> " "   Then
+               If gameGrid(1) = 2 And gameGrid(4) = 0 Then
+                  Call PawnOnGrid("REMOVE", "   ", 1)
+                  Call PawnOnGrid("PLACE ", "CPU", 4)
+                  sbx30(3) = sbx30(1)
+               Else
+                  sphereNum = 3
+               End If
+            End If
+
+            If sphereNum = 3 And sbx30(2) <> " "   Then
+               If gameGrid(1) = 2 And gameGrid(3) = 1 Then
+                  Call PawnOnGrid("REMOVE", "   ", 1)
+                  Call PawnOnGrid("PLACE ", "CPU", 3)
+                  sbx30(3) = sbx30(2)
                End If
             End If
 
@@ -1570,6 +1653,25 @@ Sub CpuMove() Static
         Call ExtractSphere(29)
         Exit Sub
     End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box30(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(30)
+        Exit Sub
+    End If
+
+    'NOT ENOUGH MEMORY TO HANDLE THIS MOVE :(((
+    'totEquals = 0
+    'For idx As byte = 0 To maxCells -1
+    '   If gameGrid(idx) = box31(idx) Then totEquals = totEquals + 1
+    'Next
+    'If totEquals = 9 Then
+    '    Call ExtractSphere(31)
+    '    Exit Sub
+    'End If
 End Sub
 ' -------------------------------------------------------------
 
@@ -1674,6 +1776,7 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
     End If
 
     If pMove = "rest" Then
+       Border 15: Background 15: POKE 646,1
        Print "{clear}"
        Call Init()
        Call ShowTitle()
@@ -1682,6 +1785,7 @@ Sub EvaluatePlayerMove(pMove As String*4) Static
     End If
 
     If pMove = "next" And winner <> 0 Then
+       Border 15: Background 15: POKE 646,1
        Print "{clear}"
        Call ShowTitle()
        Call ShowGrid()
