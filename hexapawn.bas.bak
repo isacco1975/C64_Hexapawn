@@ -575,7 +575,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 25
-            sphereNum = CInt(Rnd()*3) + 1
+            sphereNum = CByte(Rnd()*3) + 1
 
             If sphereNum = 1 And sbx25(0) <> " " Then
                If gameGrid(5) = 1 And gameGrid(1) = 2 Then
@@ -606,7 +606,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End if
 
        Case 1
-            sphereNum = CInt(Rnd()*3) + 1
+            sphereNum = CByte(Rnd()*3) + 1
 
             If sphereNum = 1 And sbx1(0) <> " " Then
                If gameGrid(3) = 1 And gameGrid(1) = 2 Then
@@ -637,7 +637,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End if
 
        Case 2
-            sphereNum = CInt(Rnd()*2) + 1
+            sphereNum = CByte(Rnd()*2) + 1
 
             If sphereNum = 1 And sbx2(0) <> " " Then
                If gameGrid(2) = 0 And gameGrid(0) = 2 Then
@@ -658,7 +658,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 3
-            sphereNum = CInt(Rnd()*4) + 1
+            sphereNum = CByte(Rnd()*4) + 1
 
             If sphereNum = 1 And sbx3(0) <> " " Then
                If gameGrid(6) = 0 And gameGrid(3) = 2 Then
@@ -699,7 +699,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End if
 
        Case 29
-            sphereNum = CInt(Rnd()*4) + 1
+            sphereNum = CByte(Rnd()*4) + 1
 
             If sphereNum = 1 And sbx29(0) <> " " Then
                If gameGrid(8) = 0 And gameGrid(5) = 2 Then
@@ -740,7 +740,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End if
 
        Case 4
-            sphereNum = CInt(Rnd()*4) + 1
+            sphereNum = CByte(Rnd()*4) + 1
 
             If sphereNum = 1 And sbx4(0) <> " " Then
                If gameGrid(3) = 1 And gameGrid(1) = 2 Then
@@ -781,7 +781,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 5
-            sphereNum = CInt(Rnd()*3) + 1
+            sphereNum = CByte(Rnd()*3) + 1
 
             If sphereNum = 1 And sbx5(0) <> " " Then
                If gameGrid(3) = 1 And gameGrid(0) = 2 Then
@@ -812,7 +812,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 6
-            sphereNum = CInt(Rnd()*3) + 1
+            sphereNum = CByte(Rnd()*3) + 1
 
             If sphereNum = 1 And sbx6(0) <> " "  Then
                If gameGrid(1) = 2 And gameGrid(3) = 1 Then
@@ -843,7 +843,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 7
-            sphereNum = CInt(Rnd()*3) + 1
+            sphereNum = CByte(Rnd()*3) + 1
 
             If sphereNum = 1 And sbx7(0) <> " "   Then
                If gameGrid(4) = 2 And gameGrid(6) = 1 Then
@@ -874,7 +874,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 8
-            sphereNum = CInt(Rnd()*2) + 1
+            sphereNum = CByte(Rnd()*2) + 1
 
             If sphereNum = 1 And sbx8(0) <> " "   Then
                If gameGrid(1) = 2 And gameGrid(5) = 1 Then
@@ -895,7 +895,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 26 ' is the same sphere box as 8
-            sphereNum = CInt(Rnd()*2) + 1
+            sphereNum = CByte(Rnd()*2) + 1
 
             If sphereNum = 1 And sbx8(0) <> " "   Then
                If gameGrid(1) = 2 And gameGrid(5) = 1 Then
@@ -916,7 +916,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 9
-            sphereNum = CInt(Rnd()*2) + 1
+            sphereNum = CByte(Rnd()*2) + 1
 
             If sphereNum = 1 And sbx9(0) <> " "   Then
                If gameGrid(3) = 2 And gameGrid(6) = 0 Then
@@ -937,7 +937,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 10
-            sphereNum = CInt(Rnd()*2) + 1
+            sphereNum = CByte(Rnd()*2) + 1
 
             If sphereNum = 1 And sbx10(0) <> " " Then
                If gameGrid(4) = 1 And gameGrid(0) = 2 Then
@@ -958,7 +958,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 11
-            sphereNum = CInt(Rnd()*2) + 1
+            sphereNum = CByte(Rnd()*2) + 1
 
             If sphereNum = 1 And sbx11(0) <> " " Then
                If gameGrid(2) = 2 And gameGrid(4) = 1 Then
@@ -979,7 +979,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 12
-            sphereNum = CInt(Rnd()*2) + 1
+            sphereNum = CByte(Rnd()*2) + 1
 
             If sphereNum = 1 And sbx12(0) <> " " Then
                If gameGrid(2) = 2 And gameGrid(4) = 1 Then
@@ -1009,7 +1009,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 14
-            sphereNum = CInt(Rnd()*2) + 1
+            sphereNum = CByte(Rnd()*2) + 1
 
             If sphereNum = 1 And sbx14(0) <> " " Then
                If gameGrid(3) = 2 And gameGrid(6) = 0 Then
@@ -1039,7 +1039,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 16
-            sphereNum = CInt(Rnd()*2) + 1
+            sphereNum = CByte(Rnd()*2) + 1
 
             If sphereNum = 1 And sbx16(0) <> " " Then
                If gameGrid(3) = 2 And gameGrid(6) = 0 Then
@@ -1060,7 +1060,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 17
-            sphereNum = CInt(Rnd()*2) + 1
+            sphereNum = CByte(Rnd()*2) + 1
 
             If sphereNum = 1 And sbx17(0) <> " " Then
                If gameGrid(1) = 2 And gameGrid(3) = 1 Then
@@ -1081,7 +1081,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 18
-            sphereNum = CInt(Rnd()*2) + 1
+            sphereNum = CByte(Rnd()*2) + 1
 
             If sphereNum = 1 And sbx18(0) <> " " Then
                If gameGrid(3) = 2 And gameGrid(6) = 0 Then
@@ -1102,7 +1102,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 19
-            sphereNum = CInt(Rnd()*2) + 1
+            sphereNum = CByte(Rnd()*2) + 1
 
             If sphereNum = 1 And sbx19(0) <> " " Then
                If gameGrid(4) = 2 And gameGrid(7) = 0 Then
@@ -1123,7 +1123,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 20
-            sphereNum = CInt(Rnd()*3) + 1
+            sphereNum = CByte(Rnd()*3) + 1
 
             If sphereNum = 1 And sbx20(0) <> " " Then
                If gameGrid(3) = 2 And gameGrid(6) = 0 Then
@@ -1154,7 +1154,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 21
-            sphereNum = CInt(Rnd()*2) + 1
+            sphereNum = CByte(Rnd()*2) + 1
 
             If sphereNum = 1 And sbx21(0) <> " " Then
                If gameGrid(1) = 2 And gameGrid(3) = 1 Then
@@ -1175,7 +1175,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 22
-            sphereNum = CInt(Rnd()*2) + 1
+            sphereNum = CByte(Rnd()*2) + 1
 
             If sphereNum = 1 And sbx22(0) <> " " Then
                If gameGrid(1) = 2 And gameGrid(5) = 1 Then
@@ -1196,7 +1196,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 23
-            sphereNum = CInt(Rnd()*2) + 1
+            sphereNum = CByte(Rnd()*2) + 1
 
             If sphereNum = 1 And sbx23(0) <> " " Then
                If gameGrid(6) = 0 And gameGrid(3) = 2 Then
@@ -1217,7 +1217,7 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
        Case 24
-            sphereNum = CInt(Rnd()*2) + 1
+            sphereNum = CByte(Rnd()*2) + 1
 
             If sphereNum = 1 And sbx24(0) <> " " Then
                If gameGrid(2) = 2 And gameGrid(4) = 1 Then

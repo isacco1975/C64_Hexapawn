@@ -18,44 +18,47 @@
 ' **************************************************************
 
 ' **** WORKING-STORAGE
+Const maxBoxes = 24
 Const maxCells = 9
 
 Dim gameGrid(9) As Byte
+Dim pawn(6) As String*1 ' A PAWN TO DRAW
 Dim playerWins As Byte
 Dim cpuWins As Byte
 Dim boxExtracted As Byte
 Dim winner As Byte
+Dim numMove As Byte
 
 ' THE MATCHBOXES
-Dim box1  As String*9: box1  = "222100011"
-Dim box2  As String*9: box2  = "222010101"
-Dim box3  As String*9: box3  = "202210001"
-Dim box4  As String*9: box4  = "022120001"
-Dim box5  As String*9: box5  = "202110010"
-Dim box6  As String*9: box6  = "220101001"
-Dim box7  As String*9: box7  = "022021100"
-Dim box8  As String*9: box8  = "022211100"
-Dim box9  As String*9: box9  = "202201010"
-Dim box10 As String*9: box10 = "220112001"
-Dim box11 As String*9: box11 = "022010001"
-Dim box12 As String*9: box12 = "022010100"
-Dim box13 As String*9: box13 = "202100001"
-Dim box14 As String*9: box14 = "002221000"
-Dim box15 As String*9: box15 = "200111000"
-Dim box16 As String*9: box16 = "020211000"
-Dim box17 as String*9: box17 = "020112000"
-Dim box18 As String*9: box18 = "200221000"
-Dim box19 As String*9: box19 = "002122000"
-Dim box20 As String*9: box20 = "002210000"
-Dim box21 As String*9: box21 = "020120000"
-Dim box22 As String*9: box22 = "020012000"
-Dim box23 As String*9: box23 = "200210000"
-Dim box24 As String*9: box24 = "002012000"
-Dim box25 As String*9: box25 = "222001110"
-Dim box26 As String*9: box26 = "022210110"
-Dim box27 As String*9: box27 = "202001100"
-Dim box28 As String*9: box28 = "202102010"
-Dim box29 As String*9: box29 = "202012100"
+Dim box1(9)  As Byte
+Dim box2(9)  As Byte
+Dim box3(9)  As Byte
+Dim box4(9)  As Byte
+Dim box5(9)  As Byte
+Dim box6(9)  As Byte
+Dim box7(9)  As Byte
+Dim box8(9)  As Byte
+Dim box9(9)  As Byte
+Dim box10(9) As Byte
+Dim box11(9) As Byte
+Dim box12(9) As Byte
+Dim box13(9) As Byte
+Dim box14(9) As Byte
+Dim box15(9) As Byte
+Dim box16(9) As Byte
+Dim box17(9) As Byte
+Dim box18(9) As Byte
+Dim box19(9) As Byte
+Dim box20(9) As Byte
+Dim box21(9) As Byte
+Dim box22(9) As Byte
+Dim box23(9) As Byte
+Dim box24(9) As Byte
+Dim box25(9) As Byte
+Dim box26(9) As Byte
+Dim box27(9) As Byte
+Dim box28(9) As Byte
+Dim box29(9) As Byte
 
 ' THE SPHERE BOXES
 Dim sbx1(4)  As String*1
