@@ -1308,41 +1308,268 @@ End Sub
 
 ' *** CPU MOVE: MATCHS THE CURRENT GRID SCHEMA TO CHOSE THE CORRECT BOX
 Sub CpuMove() Static
-    Dim compareString(9) As string*1
+    Dim totEquals As Byte
 
-    For idx As Byte = 0 To maxCells - 1
-       compareString(idx) = STR$(gameGrid(idx))
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box1(idx) Then totEquals = totEquals + 1
     Next
+    If totEquals = 9 Then
+        Call ExtractSphere(1)
+        Exit Sub
+    End If
 
-    If compareString  = box1  Then Call ExtractSphere(1)
-    If compareString  = box2  Then Call ExtractSphere(2)
-    If compareString  = box3  Then Call ExtractSphere(3)
-    If compareString  = box4  Then Call ExtractSphere(4)
-    If compareString  = box5  Then Call ExtractSphere(5)
-    If compareString  = box6  Then Call ExtractSphere(6)
-    If compareString  = box7  Then Call ExtractSphere(7)
-    If compareString  = box8  Then Call ExtractSphere(8)
-    If compareString  = box9  Then Call ExtractSphere(9)
-    If compareString  = box10 Then Call ExtractSphere(10)
-    If compareString  = box11 Then Call ExtractSphere(11)
-    If compareString  = box12 Then Call ExtractSphere(12)
-    If compareString  = box13 Then Call ExtractSphere(13)
-    If compareString  = box14 Then Call ExtractSphere(14)
-    If compareString  = box15 Then Call ExtractSphere(15)
-    If compareString  = box16 Then Call ExtractSphere(16)
-    If compareString  = box17 Then Call ExtractSphere(17)
-    If compareString  = box18 Then Call ExtractSphere(18)
-    If compareString  = box19 Then Call ExtractSphere(19)
-    If compareString  = box20 Then Call ExtractSphere(20)
-    If compareString  = box21 Then Call ExtractSphere(21)
-    If compareString  = box22 Then Call ExtractSphere(22)
-    If compareString  = box23 Then Call ExtractSphere(23)
-    If compareString  = box24 Then Call ExtractSphere(24)
-    If compareString  = box25 Then Call ExtractSphere(25)
-    If compareString  = box26 Then Call ExtractSphere(26)
-    If compareString  = box27 Then Call ExtractSphere(27)
-    If compareString  = box28 Then Call ExtractSphere(28)
-    If compareString  = box29 Then Call ExtractSphere(29)
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box2(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(2)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box3(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(3)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box4(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(4)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box5(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(5)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box6(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(6)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box7(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(7)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box8(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(8)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box9(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(9)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box10(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(10)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box11(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(11)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box12(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(12)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box13(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(13)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box14(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(14)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box15(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(15)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box16(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(16)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box17(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(17)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box18(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(18)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box19(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(19)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box20(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(20)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box21(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(21)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box22(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(22)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box23(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(23)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box24(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(24)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box25(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(25)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box26(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(26)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box27(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(27)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box28(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(28)
+        Exit Sub
+    End If
+
+    totEquals = 0
+    For idx As byte = 0 To maxCells -1
+       If gameGrid(idx) = box29(idx) Then totEquals = totEquals + 1
+    Next
+    If totEquals = 9 Then
+        Call ExtractSphere(29)
+        Exit Sub
+    End If
 End Sub
 ' -------------------------------------------------------------
 
