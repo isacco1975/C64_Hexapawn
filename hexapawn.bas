@@ -2,12 +2,12 @@
 ' **************************************************************
 ' * HEXAPAWN 1.0 - C. 2024 IGP (ISAAC GARCIA PEVERI) TECH BLOG *
 ' * DATE WRITTEN:  04/04/2024                                  *
-' * DATE COMPILED: 11/04/2024                                  *
-' * LAST EDITED:   11/04/2024                                  *
+' * DATE COMPILED: 12/04/2024                                  *
+' * LAST EDITED:   12/04/2024                                  *
 ' * COMPILER:      XC BASIC 3 FOR WINDOWS X64                  *
 ' **************************************************************
 ' *                                                            *
-' *  changes: 11/04/2024 many bug fixes on some moves.         *
+' *  changes: 12/04/2024 many bug fixes on some moves.         *
 ' *                                                            *
 ' **************************************************************
 ' * this software is based upon HER created by Roberto Rampini *
@@ -580,6 +580,12 @@ Sub CheckWinner() Static
     And gameGrid(6) = 1 And gameGrid(7) = 0 And gameGrid(8) = 0 Then
         winner = 2
     End If
+
+    If  gameGrid(0) = 2 And gameGrid(1) = 0 And gameGrid(2) = 0 _
+    And gameGrid(3) = 1 And gameGrid(4) = 2 And gameGrid(5) = 0 _
+    And gameGrid(6) = 0 And gameGrid(7) = 1 And gameGrid(8) = 0 Then
+        winner = 2
+    End If
 End Sub
 ' -------------------------------------------------------------
 
@@ -781,9 +787,9 @@ Sub ExtractSphere(pBox As Byte) Static
             End If
 
             If sphereNum = 3 And sbx6(2) <> " "   Then
-               If gameGrid(1) = 2 And gameGrid(6) = 1 Then
+               If gameGrid(1) = 2 And gameGrid(4) = 1 Then
                   Call PawnOnGrid("REMOVE", "   ", 1)
-                  Call PawnOnGrid("PLACE ", "CPU", 6)
+                  Call PawnOnGrid("PLACE ", "CPU", 4)
                   sbx6(4) = sbx6(2)
                End If
             End If
