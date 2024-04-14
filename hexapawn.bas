@@ -602,7 +602,7 @@ Sub CheckWinner() Static
     If  gameGrid(0) = 2 And gameGrid(1) = 0 And gameGrid(2) = 2 _
     And gameGrid(3) = 1 And gameGrid(4) = 2 And gameGrid(5) = 1 _
     And gameGrid(6) = 0 And gameGrid(7) = 1 And gameGrid(8) = 0 Then
-        winner = 2
+        winner = 1
     End If
 End Sub
 ' -------------------------------------------------------------
