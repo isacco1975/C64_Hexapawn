@@ -953,7 +953,7 @@ Sub ExtractSphere(pBox As Byte) Static
                If gameGrid(2) = 2 And gameGrid(5) = 0 Then
                   Call PawnOnGrid("REMOVE", "   ", 2)
                   Call PawnOnGrid("PLACE ", "CPU", 5)
-                  sbx13(4) = sbx13(1)
+                  sbx13(4) = sbx13(0)
                End If
             End If
 
